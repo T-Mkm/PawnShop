@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AJAX Test</title>
+		<script type="text/javascript">
+		function CallAJAXFunction(verb, params)
+		{
+			var data = 'action=' + verb;
+			for(var i in params)
+			{
+				data = data + '&' + encodeURIComponent(i) + '=' + encodeURIComponent(params[i]);
+			}
+			var request = new XMLHttpRequest();
+			request.onreadystatechange = function ()
+			{
+				document.getElementById('theContent').innerHTML = request.responseText;
+			};
+			request.open('post','/ajax',true);
+			request.send(data);
+		}
+		/*	function CallAJAXFunction()
+			{
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function ()
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('post','/ajax',true);
+				request.send('action=loadMenu');
+			}
+			
+			function CallRegistFunction(username, password, confirmpassword, email)
+			{
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function ()
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('post','/ajax',true);
+				request.send('action=register&name='+encodeURIComponent(username)+'&password='+encodeURIComponent(password)+'&passwordVerify='+encodeURIComponent(confirmpassword)+'&email='+encodeURIComponent(email));
+			}
+			function CallLoginFunction(username, password)
+			{
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function ()
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('post','/login',true);
+				request.send('action=login&username='+encodeURIComponent(username)+'&password='+encodeURIComponent(password));
+			}
+			function CallLogoutFunction() {
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function () 
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('get', '/logout/', true);
+				request.send();
+			}
+			//add			
+			function CallAddFunction(itemName, itemDescription, itemCategory)
+			{
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function ()
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('post','/ajax',true);
+				request.send('action=add&itemName='+encodeURIComponent(itemName)+'&itemDescription='+encodeURIComponent(itemDescription)+'&itemCategory='+encodeURIComponent(itemCategory));
+			}
+			//LoadMenuByCat
+			function CallLoadMenuByCat(categoryNameToListItems){
+				var request = new XMLHttpRequest();
+				request.onreadystatechange = function ()
+				{
+					document.getElementById('theContent').innerHTML = request.responseText;
+				};
+				request.open('post', '/ajax', true);
+				request.send('action=loadMenuByCat&categoryName=' + encodeURIComponent(categoryNameToListItems));
+			}*/
+		</script>
+	</head>
+	<body onload="CallAJAXFunction('',{'form':true});">
+		<div id="theContent"></div>
+		<!-- <input type="button" value="Load AJAX Call" onclick="CallAJAXFunction('loadMenu',{});" /><br/><br/><br/>
+		<br/><input type="button" value="Log out" onclick="CallAJAXFunction('logout',{})"/>
+		<form method="POST" enctype="application/x-www-form-urlencoded">
+			<label>Name:</label>
+			<input id="name" type="text" name="name" value="" placeholder="Enter login..." /><br />
+			<label>Password:</label>
+			<input id="password" type="text" name="password" value="" placeholder="Enter password..." /><br />
+			<label>Verify password:</label>
+			<input id="confirmpassword" type="text" name="passwordVerify" value="" placeholder="Verify password..." /><br />
+			<label>Email:</label>
+			<input id="email" type="text" name="email" value="" placeholder="Enter email..."/><br />
+			<input type="button" value="accept" onclick="CallAJAXFunction('register',{'username':document.getElementById('name').value,'password':document.getElementById('password').value,'passwordVerify':document.getElementById('confirmpassword').value,'email':document.getElementById('email').value});"/>
+		</form>
+		<br>
+		<form method="POST" enctype="application/x-www-form-urlencoded">
+			<label>Username:</label>
+			<input id="namel" type="text" name="name" value="" placeholder="Enter login..." /><br />
+			<label>Password:</label>
+			<input id="passwordl" type="text" name="password" value="" placeholder="Enter password..." /><br />
+			<input type="button" value="login" onclick="CallAJAXFunction('login',{'name':document.getElementById('namel').value,'password':document.getElementById('passwordl').value});"/>
+		</form>
+		<br/> -->
+		<!--/add/ itemName, itemDescription, itemCategory-->
+		<!-- <form method="POST" enctype="application/x-www-form-urlencoded">
+			<label>itemName:</label>
+			<input id="itemName" type="text" name="itemName" value="" placeholder="Enter itemName ..." /><br />
+			<label>itemDescription:</label>
+			<input id="itemDescription" type="text" name="itemDescription" value="" placeholder="Enter itemDescription..." /><br />
+			<label>itemCategory:</label>
+			<input id="itemCategory" type="text" name="itemCategory" value="" placeholder="Enter itemCategory..." /><br />
+			<input type="button" value="add" onclick="CallAJAXFunction('add',{'itemName':document.getElementById('itemName').value,'itemDescription':document.getElementById('itemDescription').value,'itemCategory':document.getElementById('itemCategory').value});"/>
+		</form>
+		<br>
+		<br>
+		<form method="POST" enctype="application/x-www-form-urlencoded">
+			<label>categoryName:</label>
+			<input id="categoryName" type="text" name="categoryName" value="" placeholder="Enter categoryName ..." /><br />
+			<input type="button" value="loadMenuByCat" name="loadMenuByCat" onclick="CallAJAXFunction('loadMenuByCat',{'categoryName':document.getElementById('categoryName').value});" />
+		</form> -->
+	</body>
+</html>
